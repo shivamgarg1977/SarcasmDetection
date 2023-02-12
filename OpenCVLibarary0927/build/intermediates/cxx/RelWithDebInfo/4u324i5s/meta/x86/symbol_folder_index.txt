@@ -1,0 +1,1 @@
+C:\Users\shiva\AndroidStudioProjects\SarcasmDetection\OpenCVLibarary0927\build\intermediates\cxx\RelWithDebInfo\4u324i5s\obj\x86

@@ -1,0 +1,19 @@
+@echo off
+"C:\\Users\\shiva\\AppData\\Local\\Android\\Sdk\\cmake\\3.18.1\\bin\\cmake.exe" ^
+  "-HC:\\Users\\shiva\\AndroidStudioProjects\\SarcasmDetection\\OpenCVLibarary0927\\libcxx_helper" ^
+  "-DCMAKE_SYSTEM_NAME=Android" ^
+  "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON" ^
+  "-DCMAKE_SYSTEM_VERSION=21" ^
+  "-DANDROID_PLATFORM=android-21" ^
+  "-DANDROID_ABI=x86" ^
+  "-DCMAKE_ANDROID_ARCH_ABI=x86" ^
+  "-DANDROID_NDK=C:\\Users\\shiva\\AppData\\Local\\Android\\Sdk\\ndk\\23.1.7779620" ^
+  "-DCMAKE_ANDROID_NDK=C:\\Users\\shiva\\AppData\\Local\\Android\\Sdk\\ndk\\23.1.7779620" ^
+  "-DCMAKE_TOOLCHAIN_FILE=C:\\Users\\shiva\\AppData\\Local\\Android\\Sdk\\ndk\\23.1.7779620\\build\\cmake\\android.toolchain.cmake" ^
+  "-DCMAKE_MAKE_PROGRAM=C:\\Users\\shiva\\AppData\\Local\\Android\\Sdk\\cmake\\3.18.1\\bin\\ninja.exe" ^
+  "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\\Users\\shiva\\AndroidStudioProjects\\SarcasmDetection\\OpenCVLibarary0927\\build\\intermediates\\cxx\\Debug\\3kj3h382\\obj\\x86" ^
+  "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=C:\\Users\\shiva\\AndroidStudioProjects\\SarcasmDetection\\OpenCVLibarary0927\\build\\intermediates\\cxx\\Debug\\3kj3h382\\obj\\x86" ^
+  "-DCMAKE_BUILD_TYPE=Debug" ^
+  "-BC:\\Users\\shiva\\AndroidStudioProjects\\SarcasmDetection\\OpenCVLibarary0927\\.cxx\\Debug\\3kj3h382\\x86" ^
+  -GNinja ^
+  "-DANDROID_STL=c++_shared"

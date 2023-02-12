@@ -1,0 +1,2 @@
+ninja: Entering directory `C:\Users\shiva\AndroidStudioProjects\SarcasmDetection\OpenCVLibarary0927\.cxx\Debug\21t3h163\arm64-v8a'
+ninja: no work to do.

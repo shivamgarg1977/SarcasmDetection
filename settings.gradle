@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Sarcasm Detection"
+include ':app'
+
+include ':openCV0927'
+include ':openCVLibrary0927'
+include ':OpenCVLibarary0927'
+include ':OpenCVLibrary3413'
+include ':OpenCVLibarary0927'
