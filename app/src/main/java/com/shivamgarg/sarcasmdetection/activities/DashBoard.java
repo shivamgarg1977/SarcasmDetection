@@ -1,5 +1,6 @@
 package com.shivamgarg.sarcasmdetection.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +29,6 @@ public class DashBoard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showBottomDialog();
-
             }
         });
 
@@ -40,7 +40,12 @@ public class DashBoard extends AppCompatActivity {
 
         LinearLayout imageFromGallery = bottomSheetDialog.findViewById(R.id.select_from_gallery);
         LinearLayout imageFromCamera = bottomSheetDialog.findViewById(R.id.select_from_camera);
-
+        imageFromCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DashBoard.this, CameraActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            }
+        });
         bottomSheetDialog.show();
     }
 }
