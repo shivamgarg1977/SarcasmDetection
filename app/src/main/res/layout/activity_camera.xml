@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:padding="10dp">
 
-    <org.opencv.android.JavaCameraView
-        android:id="@+id/frame_Surface"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/navigation_banner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="650dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="20dp">
+
+        <org.opencv.android.JavaCameraView
+            android:id="@+id/frame_Surface"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/camera_flip"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:baselineAlignBottom="true"
+        android:src="@drawable/image_camera_flip" />
+
+    <ImageView
+        android:id="@+id/camera_capture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:baselineAlignBottom="true"
+        android:src="@drawable/image_camera_capture"
+
+        />
 
 
-</FrameLayout>
+</RelativeLayout>

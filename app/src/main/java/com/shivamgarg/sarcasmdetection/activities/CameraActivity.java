@@ -6,8 +6,10 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -18,6 +20,7 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
@@ -27,6 +30,13 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     private Mat mRgba;
     private Mat mGray;
     private CameraBridgeViewBase mOpenCvCameraView;
+
+    private ImageView imageView_flip;
+    private int mCameraId = 0;
+
+    private ImageView take_picture_button;
+    private int take_image = 0;
+
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -64,23 +74,49 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
 
         setContentView(R.layout.activity_camera);
 
+
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.frame_Surface);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCameraPermissionGranted();
         mOpenCvCameraView.setCvCameraViewListener(this);
         mOpenCvCameraView.enableFpsMeter();
+        imageView_flip = findViewById(R.id.camera_flip);
 
+        imageView_flip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swapCamera();
+            }
+        });
+
+        take_picture_button = findViewById(R.id.camera_capture);
+
+        take_picture_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (take_image == 0) {
+                    take_image = 1;
+                }
+            }
+        });
+
+    }
+
+    private void swapCamera() {
+
+        mCameraId = mCameraId ^ 1;
+        mOpenCvCameraView.disableView();
+        mOpenCvCameraView.setCameraIndex(mCameraId);
+        mOpenCvCameraView.enableView();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         if (OpenCVLoader.initDebug()) {
-            //if load success
             Log.d(TAG, "Opencv initialization is done");
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         } else {
-            //if not loaded
             Log.d(TAG, "Opencv is not loaded. try again");
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_4_0, this, mLoaderCallback);
         }
@@ -115,6 +151,10 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         mRgba = inputFrame.rgba();
         mGray = inputFrame.gray();
 
+        if (mCameraId == 1) {
+            Core.flip(mRgba, mRgba, -1);
+            Core.flip(mGray, mGray, -1);
+        }
         return mRgba;
 
     }
